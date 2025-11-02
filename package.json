@@ -9,6 +9,7 @@
   "scripts": {
     "build": "npm run build --workspaces",
     "test": "npm run test --workspaces",
+    "test:watch": "npm run test:watch --workspaces",
     "lint": "npm run lint --workspaces",
     "dev": "npm run dev --workspace=packages/cli",
     "clean": "rm -rf packages/*/dist",

@@ -1,6 +1,6 @@
 import chalk from 'chalk';
 import ora from 'ora';
-import { WalletManager } from '../wallets/index.js';
+import { WalletManager } from '../wallets';
 
 interface WalletOptions {
   create?: boolean;

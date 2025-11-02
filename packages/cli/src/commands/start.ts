@@ -1,7 +1,7 @@
 import chalk from 'chalk';
 import ora from 'ora';
-import { Facilitator } from '../facilitator/index.js';
-import { WalletManager } from '../wallets/index.js';
+import { Facilitator } from '../facilitator';
+import { WalletManager } from '../wallets';
 
 interface StartOptions {
   port: string;

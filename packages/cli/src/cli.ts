@@ -2,10 +2,10 @@
 
 import { Command } from 'commander';
 import chalk from 'chalk';
-import { startCommand } from './commands/start.js';
-import { stopCommand } from './commands/stop.js';
-import { statusCommand } from './commands/status.js';
-import { walletsCommand } from './commands/wallets.js';
+import { startCommand } from './commands/start';
+import { stopCommand } from './commands/stop';
+import { statusCommand } from './commands/status';
+import { walletsCommand } from './commands/wallets';
 
 const program = new Command();
 
