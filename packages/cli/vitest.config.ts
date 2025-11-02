@@ -5,4 +5,8 @@ export default defineConfig({
     globals: true,
     environment: 'node',
   },
+  esbuild: {
+    // Use esbuild instead of Rollup for faster builds and fewer dependencies
+    target: 'node18'
+  }
 });
