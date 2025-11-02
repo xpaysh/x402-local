@@ -1,0 +1,70 @@
+name: Release & Publish
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # for npm provenance
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Build packages
+        run: npm run build
+        
+      - name: Run tests
+        run: npm run test
+        
+      - name: Publish CLI to NPM
+        run: npm publish --workspace=packages/cli --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          
+      - name: Create GitHub Release Assets
+        run: |
+          # Create CLI tarball
+          cd packages/cli
+          npm pack
+          mv *.tgz ../../x402-local-cli-${{ github.event.release.tag_name }}.tgz
+          cd ../..
+          
+          # Create extension zip
+          cd packages/extension
+          npm run build
+          zip -r ../../x402-local-extension-${{ github.event.release.tag_name }}.zip . -x "node_modules/*" "src/*" "*.ts" "*.js.map"
+          cd ../..
+          
+      - name: Upload Release Assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./x402-local-cli-${{ github.event.release.tag_name }}.tgz
+          asset_name: x402-local-cli-${{ github.event.release.tag_name }}.tgz
+          asset_content_type: application/gzip
+          
+      - name: Upload Extension Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./x402-local-extension-${{ github.event.release.tag_name }}.zip
+          asset_name: x402-local-extension-${{ github.event.release.tag_name }}.zip
+          asset_content_type: application/zip

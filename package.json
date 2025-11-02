@@ -1,0 +1,50 @@
+{
+  "name": "x402-local",
+  "version": "0.1.0",
+  "description": "Local x402 development environment - no testnet hassle",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "lint": "npm run lint --workspaces",
+    "dev": "npm run dev --workspace=packages/cli",
+    "clean": "rm -rf packages/*/dist",
+    "release": "npm run build && npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xpaysh/x402-local.git"
+  },
+  "keywords": [
+    "x402",
+    "http-402",
+    "payments",
+    "blockchain",
+    "development",
+    "testing",
+    "local",
+    "facilitator",
+    "crypto",
+    "web3",
+    "agents"
+  ],
+  "author": "xPay <hello@xpay.sh>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xpaysh/x402-local/issues"
+  },
+  "homepage": "https://github.com/xpaysh/x402-local#readme",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0",
+    "tsx": "^4.6.0",
+    "vitest": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

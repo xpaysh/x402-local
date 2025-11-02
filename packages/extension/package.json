@@ -1,0 +1,31 @@
+{
+  "name": "@xpay/x402-local-extension",
+  "version": "0.1.0",
+  "description": "Browser extension for x402-local development environment",
+  "private": true,
+  "scripts": {
+    "build": "webpack --mode=production",
+    "dev": "webpack --mode=development --watch",
+    "test": "vitest"
+  },
+  "keywords": [
+    "x402",
+    "browser-extension",
+    "development",
+    "testing"
+  ],
+  "author": "xPay <hello@xpay.sh>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chrome": "^0.0.258",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "ts-loader": "^9.5.1",
+    "vitest": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

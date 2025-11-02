@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      width: 300px;
+      padding: 16px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .status {
+      padding: 8px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .connected {
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+    }
+    .disconnected {
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+    }
+    button {
+      width: 100%;
+      padding: 8px;
+      margin: 4px 0;
+      border: none;
+      border-radius: 4px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .wallets {
+      margin-top: 12px;
+      font-size: 12px;
+    }
+    .wallet {
+      padding: 4px;
+      border-bottom: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h3>🚀 x402-local</h3>
+  </div>
+  
+  <div id="status" class="status">
+    <span id="status-text">Checking connection...</span>
+  </div>
+  
+  <button id="inject-payment">💰 Inject Test Payment</button>
+  <button id="clear-payments">🗑️ Clear Payment History</button>
+  <button id="open-facilitator">🔧 Open Facilitator</button>
+  
+  <div class="wallets">
+    <strong>Available Wallets:</strong>
+    <div id="wallet-list">Loading...</div>
+  </div>
+
+  <script src="dist/popup.js"></script>
+</body>
+</html>
