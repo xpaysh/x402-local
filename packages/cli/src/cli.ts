@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import chalk from 'chalk';
+const chalk = require('chalk');
 import { startCommand } from './commands/start';
 import { stopCommand } from './commands/stop';
 import { statusCommand } from './commands/status';

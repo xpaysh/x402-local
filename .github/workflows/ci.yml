@@ -41,7 +41,7 @@ jobs:
           cd packages/cli
           npm pack
           npm install -g *.tgz
-          x402-local --help
+          npx x402-local --help
           
   security:
     runs-on: ubuntu-latest

@@ -1,5 +1,5 @@
-import chalk from 'chalk';
-import ora from 'ora';
+const chalk = require('chalk');
+const ora = require('ora');
 import { WalletManager } from '../wallets';
 
 interface WalletOptions {

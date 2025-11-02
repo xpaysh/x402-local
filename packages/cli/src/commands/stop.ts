@@ -1,5 +1,5 @@
-import chalk from 'chalk';
-import ora from 'ora';
+const chalk = require('chalk');
+const ora = require('ora');
 
 export async function stopCommand() {
   const spinner = ora('Stopping x402-local environment...').start();

@@ -1,5 +1,5 @@
-import chalk from 'chalk';
-import ora from 'ora';
+const chalk = require('chalk');
+const ora = require('ora');
 
 export async function statusCommand() {
   const spinner = ora('Checking x402-local status...').start();

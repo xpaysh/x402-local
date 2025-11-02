@@ -1,7 +1,7 @@
-import chalk from 'chalk';
-import ora from 'ora';
-import { Facilitator } from '../facilitator';
-import { WalletManager } from '../wallets';
+const chalk = require('chalk');
+const ora = require('ora');
+const { Facilitator } = require('../facilitator');
+const { WalletManager } = require('../wallets');
 
 interface StartOptions {
   port: string;
@@ -44,7 +44,7 @@ export async function startCommand(options: StartOptions) {
     
     // Display wallet information
     console.log(chalk.cyan('\\n💳 Available Test Wallets:'));
-    wallets.forEach((wallet, index) => {
+    wallets.forEach((wallet: any, index: number) => {
       console.log(`  ${index + 1}. ${wallet.address} (${wallet.balance} USDC)`);
     });
 
