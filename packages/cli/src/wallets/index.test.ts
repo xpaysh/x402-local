@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+// Jest globals are available without import
 import { WalletManager } from './index';
 
 describe('WalletManager', () => {
