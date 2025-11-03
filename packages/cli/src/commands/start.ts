@@ -1,5 +1,5 @@
 const chalk = require('chalk');
-const ora = require('ora');
+const { createSpinner } = require('../utils/spinner');
 const { Facilitator } = require('../facilitator');
 const { WalletManager } = require('../wallets');
 
@@ -10,7 +10,7 @@ interface StartOptions {
 }
 
 export async function startCommand(options: StartOptions) {
-  const spinner = ora('Starting x402-local environment...').start();
+  const spinner = createSpinner('Starting x402-local environment...').start();
   
   try {
     const port = parseInt(options.port);
@@ -18,12 +18,12 @@ export async function startCommand(options: StartOptions) {
     const delay = parseInt(options.delay);
 
     // Initialize wallet manager
-    spinner.text = 'Creating test wallets...';
+    spinner.set('text', 'Creating test wallets...');
     const walletManager = new WalletManager();
     const wallets = await walletManager.createWallets(walletCount);
     
     // Start local facilitator
-    spinner.text = 'Starting local facilitator...';
+    spinner.set('text', 'Starting local facilitator...');
     const facilitator = new Facilitator(port, { delay });
     await facilitator.start();
 

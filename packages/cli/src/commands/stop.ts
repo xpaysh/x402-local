@@ -1,8 +1,8 @@
 const chalk = require('chalk');
-const ora = require('ora');
+const { createSpinner } = require('../utils/spinner');
 
 export async function stopCommand() {
-  const spinner = ora('Stopping x402-local environment...').start();
+  const spinner = createSpinner('Stopping x402-local environment...').start();
   
   try {
     // TODO: Implement proper process management to stop running facilitator

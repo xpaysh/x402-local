@@ -1,5 +1,5 @@
 const chalk = require('chalk');
-const ora = require('ora');
+const { createSpinner } = require('../utils/spinner');
 import { WalletManager } from '../wallets';
 
 interface WalletOptions {
@@ -11,7 +11,7 @@ export async function walletsCommand(options: WalletOptions) {
   const walletManager = new WalletManager();
   
   if (options.create) {
-    const spinner = ora('Creating new test wallet...').start();
+    const spinner = createSpinner('Creating new test wallet...').start();
     try {
       const fundAmount = parseFloat(options.fund || '1000');
       const wallet = await walletManager.createWallet(fundAmount);
@@ -30,7 +30,7 @@ export async function walletsCommand(options: WalletOptions) {
     }
   } else {
     // List existing wallets
-    const spinner = ora('Loading test wallets...').start();
+    const spinner = createSpinner('Loading test wallets...').start();
     try {
       const wallets = await walletManager.getWallets();
       
